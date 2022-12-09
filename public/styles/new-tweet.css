@@ -4,19 +4,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-
   margin-top: 2em;
   margin-bottom: 1em;
   margin-left: 2.5%;
   margin-right: 2.5%;
 }
 
+/* AVATAR AND USERNAME */
 .new-tweet-header {
   display: flex;
   flex-direction: column;
   border-bottom: 4px solid #545149;
 }
 
+/* TEXTAREA */
 .new-tweet-header>textarea {
   height: 40px;
   color: #545149;
@@ -26,6 +27,7 @@
   background-color: transparent;
 }
 
+/* TIME STAMP AND ICONS */
 .new-tweet-footer {
   font-family: Bungee, sans-serif;
   display: flex;

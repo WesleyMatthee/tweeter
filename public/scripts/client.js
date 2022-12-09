@@ -96,11 +96,11 @@ $(document).ready(function() {
 
 
     if (tweetText.length === 0) {
-      return $('.error-text').text('Tweet appears to be empty').slideDown(600);
+      return $('.error-text').text('Tweet appears to be empty!').slideDown(600);
     }
 
     if (tweetText.length > 140) {
-      return $('.error-text').text('Tweet cannot exeed 140 characters').slideDown(600);
+      return $('.error-text').text('Tweet cannot exceed 140 characters!').slideDown(600);
     }
     $('.error-text').slideUp(600);
 
