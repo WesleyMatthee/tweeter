@@ -28,22 +28,26 @@ $(document).ready(function() {
   ];
 
 
-
+  const escape = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
   const createTweetElement = function(tweetData) {
     let $tweet = $(` 
     <article class="tweet">
         <header class="user">
           <div class="avatar-img">
-            <img src="${tweetData.user.avatars}">
-            <p><b>${tweetData.user.name}</b></p>
+            <img src="${escape(tweetData.user.avatars)}">
+            <p><b>${escape(tweetData.user.name)}</b></p>
           </div>
-            <p><b>${tweetData.user.handle}</b></p>
+            <p><b>${escape(tweetData.user.handle)}</b></p>
         </header>
-        <p>${tweetData.content.text}</p>
+        <p>${escape(tweetData.content.text)}</p>
         <hr/>
         <footer >
-          <div>${timeago.format(tweetData.created_at)}</div>
+          <div>${escape(timeago.format(tweetData.created_at))}</div>
           <div class="icons">
             <i class="fa-solid fa-flag"></i>
             <i class="fa-solid fa-retweet"></i>
@@ -59,8 +63,9 @@ $(document).ready(function() {
   // takes return value and appends it to the tweets container
   const renderTweets = function(tweets) {
     // loops through tweets
+    $('#tweets-container').empty();
     for (let tweet of tweets) {
-      $('#tweets-container').append(createTweetElement(tweet));
+      $('#tweets-container').prepend(createTweetElement(tweet));
       // calls createTweetElement for each tweet
     }
   };
@@ -71,6 +76,7 @@ $(document).ready(function() {
       url: "/tweets",
       success: function(result) {
         console.log(result);
+        renderTweets(result); //not sure if this works
       },
       error: function(err) {
         console.log(err);
@@ -82,9 +88,25 @@ $(document).ready(function() {
   //Form Submission using jQuery
   $('.tweet-form').submit(function(event) { //Avoid arrow functions whe using AJAX
     event.preventDefault();
-    console.log('Hello from jquery form!');
+    //console.log('Hello from jquery form!');
+
+    //FORM VALIDATION
+    let tweetText = ($(this).find('textarea').val());
+
+    if (tweetText.length === 0) {
+      return alert("Invalid entry!");
+    }
+
+    if (tweetText.length > 140) {
+      return alert("Tweets can't exceed 140 characters!");
+    }
+
+
+
+
+    //Tweets submission to Database!
     let data = $(this).serialize();
-    console.log(data);
+    //console.log(data);
     //This is a great way to use AJAX for a POST & GET request
     $.ajax({
       type: "POST", // 1: type of request
@@ -95,11 +117,11 @@ $(document).ready(function() {
         loadTweets();
       },
       error: function(err) { //ERROR FUNCTION incase unsuccessful 
-        console.log(err);
+        console.log('ERROR!', err);
       }
     });
 
-   
+
 
 
   });

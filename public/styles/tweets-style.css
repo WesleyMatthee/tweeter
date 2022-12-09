@@ -17,6 +17,7 @@ article.tweet:hover {
 }
 
 article.tweet {
+  margin-bottom: .5em;
   padding: 15px;
   border: 4px solid #545149;
 }
