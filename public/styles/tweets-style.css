@@ -56,3 +56,6 @@ article.tweet>footer {
   color: rgb(150, 150, 86);
 
 }
+
+@media screen and (max-width: 800px) {
+}

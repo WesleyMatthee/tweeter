@@ -17,7 +17,7 @@
   border-bottom: 4px solid #545149;
 }
 
-.new-tweet-header > textarea {
+.new-tweet-header>textarea {
   height: 40px;
   color: #545149;
   border: none;
@@ -33,7 +33,7 @@
   margin-top: 10px;
 }
 
-.new-tweet-footer > button {
+.new-tweet-footer>button {
   background-color: #4056A1;
   font-size: 1em;
   color: white;
@@ -41,5 +41,17 @@
 }
 
 .error {
-  color: red;
+  color: #c51244;
+}
+
+.error-text {
+  /* display: none; */
+  color: white;
+  background: #c51244 !important;
+  padding: 10px !important;
+  border-radius: 0 !important;
+  position: relative;
+  display: inline-block ;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 10px;
 }

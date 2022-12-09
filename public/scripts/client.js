@@ -84,6 +84,7 @@ $(document).ready(function() {
     });
   };
 
+  $('.error-text').slideUp().text('');
 
   //Form Submission using jQuery
   $('.tweet-form').submit(function(event) { //Avoid arrow functions whe using AJAX
@@ -93,14 +94,15 @@ $(document).ready(function() {
     //FORM VALIDATION
     let tweetText = ($(this).find('textarea').val());
 
+
     if (tweetText.length === 0) {
-      return alert("Invalid entry!");
+      return $('.error-text').text('Tweet appears to be empty').slideDown(600);
     }
 
     if (tweetText.length > 140) {
-      return alert("Tweets can't exceed 140 characters!");
+      return $('.error-text').text('Tweet cannot exeed 140 characters').slideDown(600);
     }
-
+    $('.error-text').slideUp(600);
 
 
 
@@ -114,6 +116,7 @@ $(document).ready(function() {
       data: data, // 3: The Data that is being POSTED
       success: function(result) { //SUCCESS FUNCTION for good result
         console.log(result);
+        $('textarea').val('');//clears textarea
         loadTweets();
       },
       error: function(err) { //ERROR FUNCTION incase unsuccessful 
