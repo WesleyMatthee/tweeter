@@ -1,5 +1,6 @@
 //This readies jQuery for client.js 
 $(document).ready(function() {
+  console.log("hello its me");
   // Fake data taken from initial-tweets.json
   const tweets = [
     {
@@ -118,6 +119,7 @@ $(document).ready(function() {
         console.log(result);
         $('textarea').val('');//clears textarea
         loadTweets();
+        $('.counter').val('140');
       },
       error: function(err) { //ERROR FUNCTION incase unsuccessful 
         console.log('ERROR!', err);
@@ -128,9 +130,9 @@ $(document).ready(function() {
 
 
   });
+  loadTweets();
 
 
-  renderTweets(tweets);
 
 });
 //Keep all code wrapped inside.

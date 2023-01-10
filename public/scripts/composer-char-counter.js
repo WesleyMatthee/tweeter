@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
- // console.log('Tommy can you hear me!');
+//  console.log('Tommy can you hear me!');
 
   $('#tweet-text').on('input', function() {
     //console.log($(this));
